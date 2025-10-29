@@ -1,0 +1,99 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css');
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+}
+
+@layer utilities {
+  /* Font */
+  /* regular */
+  .font-regular-14 {
+    font-size: 14px;
+    font-weight: var(--font-weight-normal);
+    line-height: 150%;
+  }
+
+  .font-regular-16 {
+    font-size: 16px;
+    font-weight: var(--font-weight-normal);
+    line-height: 133%;
+  }
+
+  .font-regular-20 {
+    font-size: 20px;
+    font-weight: var(--font-weight-normal);
+    line-height: 133%;
+  }
+
+  /* medium */
+  .font-medium-14 {
+    font-size: 14px;
+    font-weight: var(--font-weight-medium);
+    line-height: 150%;
+  }
+
+  .font-medium-20 {
+    font-size: 20px;
+    font-weight: var(--font-weight-medium);
+    line-height: 133%;
+  }
+
+  .font-medium-32 {
+    font-size: 32px;
+    font-weight: var(--font-weight-medium);
+    line-height: 133%;
+  }
+
+  /* semibold */
+  .font-semibold-20 {
+    font-size: 20px;
+    font-weight: var(--font-weight-semibold);
+    line-height: 24px;
+  }
+
+  /* bold */
+  .font-bold-20 {
+    font-size: 20px;
+    font-weight: var(--font-weight-bold);
+    line-height: 133%;
+  }
+
+  .font-bold-22 {
+    font-size: 22px;
+    font-weight: var(--font-weight-bold);
+    line-height: 133%;
+  }
+
+  .font-bold-24 {
+    font-size: 24px;
+    font-weight: var(--font-weight-bold);
+    line-height: 133%;
+  }
+
+  .font-bold-40 {
+    font-size: 40px;
+    font-weight: var(--font-weight-bold);
+    line-height: 133%;
+  }
+
+  .font-bold-48 {
+    font-size: 48px;
+    font-weight: var(--font-weight-bold);
+    line-height: 133%;
+  }
+
+  /* extra bold */
+  .font-extrabold-24 {
+    font-size: 24px;
+    font-weight: var(--font-weight-extrabold);
+    line-height: 133%;
+  }
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: Pretendard, sans-serif;
+}
