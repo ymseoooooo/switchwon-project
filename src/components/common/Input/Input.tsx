@@ -27,13 +27,13 @@ export function Input({
   const id = useId();
   return (
     <div className="flex flex-col gap-3">
-      {label && <div className="font-medium-20 h-[27px]">{label}</div>}
+      {label && <div className="font-medium-20 h-[27px] text-gray-600">{label}</div>}
       <div
         className={cn(
           INPUT_SIZE_CLASSES[size],
           'flex items-center justify-center gap-[10px] p-6',
-          'rounded-xl border border-gray-700',
-          readOnly && 'border-gray-500 bg-gray-100',
+          'rounded-xl border',
+          readOnly ? 'border-gray-500 bg-gray-100' : 'border-gray-700 bg-white',
           inputContainerClassName
         )}
       >

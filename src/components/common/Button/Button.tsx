@@ -33,7 +33,7 @@ export function Button({
         BUTTON_VARIANT_CLASSES[variant],
         BUTTON_COLOR_CLASSES[color],
         BUTTON_SIZE_CLASSES[size],
-        'text-button-text-white',
+        'font-bold-20 text-white',
         'rounded-xl',
         disabled && 'cursor-not-allowed',
         className
