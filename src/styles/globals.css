@@ -4,7 +4,15 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #171717;
+
   --color-blue-500: #3479eb;
+
+  --color-gray-100: #f1f2f4;
+  --color-gray-500: #acb4bb;
+  --color-gray-600: #646f7c;
+  --color-gray-700: #374553;
+
+  --color-red-500: #fe5050;
 
   /* Button */
   --color-button-dark-navy: #1b2334;
@@ -12,7 +20,7 @@
   --color-button-text-white: #ffffff;
 }
 
-@theme {
+@theme inline {
   /* Button */
   --color-button-blue: var(--color-blue-500);
 }
