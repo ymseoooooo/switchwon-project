@@ -4,6 +4,17 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #171717;
+  --color-blue-500: #3479eb;
+
+  /* Button */
+  --color-button-dark-navy: #1b2334;
+  --color-button-red: #ff4d4f;
+  --color-button-text-white: #ffffff;
+}
+
+@theme {
+  /* Button */
+  --color-button-blue: var(--color-blue-500);
 }
 
 @layer utilities {
