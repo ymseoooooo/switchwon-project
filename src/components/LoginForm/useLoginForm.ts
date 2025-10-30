@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import useMutationLogin from '@/hooks/queries/auth/useMutationLogin';
 import { setCookie } from '@/utils/cookie';
+import { getJwtMaxAge } from '@/utils/jwt';
 
 interface UseLoginFormReturn {
   email: string;
@@ -31,11 +32,10 @@ export function useLoginForm(): UseLoginFormReturn {
       },
       {
         onSuccess: async res => {
-          // 보통 만료시간을 백엔드에서 받지만 임시로 지정
-          const loginMaxAge = 60 * 60 * 24;
-
           try {
-            await setCookie('token', res.token, { maxAge: loginMaxAge });
+            const maxAge = getJwtMaxAge(res.token);
+
+            await setCookie('token', res.token, { maxAge });
             router.push('/');
           } catch (error) {
             console.error(error);
