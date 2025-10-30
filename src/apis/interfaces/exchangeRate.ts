@@ -1,4 +1,4 @@
-export type CurrencyType = 'KRW' | 'USD' | 'JPY';
+import { CurrencyType } from './currency';
 
 export interface ExchangeRate {
   exchangeRateId: number;

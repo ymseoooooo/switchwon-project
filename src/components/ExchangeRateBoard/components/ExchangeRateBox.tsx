@@ -1,13 +1,14 @@
 import { ExchangeRate } from '@/apis/interfaces/exchangeRate';
 import { Box } from '@/components/Box';
 import { useExchangeRateBox } from './useExchangeRateBox';
+import { getCurrencyTransrateLabel } from '@/utils/currency';
 
 interface ExchangeRateBoxProps {
   exchangeRate: ExchangeRate;
 }
 
 export function ExchangeRateBox({ exchangeRate }: ExchangeRateBoxProps) {
-  const { getCurrencyTransrate, getPercentageLabel } = useExchangeRateBox();
+  const { getPercentageLabel } = useExchangeRateBox();
 
   return (
     <Box className="h-[143px] w-[304px]">
@@ -21,7 +22,7 @@ export function ExchangeRateBox({ exchangeRate }: ExchangeRateBoxProps) {
           </div>
         </div>
 
-        <div className="font-regualar-16 text-gray-600">{getCurrencyTransrate(exchangeRate.currency)}</div>
+        <div className="font-regualar-16 text-gray-600">{getCurrencyTransrateLabel(exchangeRate.currency)}</div>
       </div>
     </Box>
   );
