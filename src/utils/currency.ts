@@ -35,7 +35,7 @@ export function getCurrencyCountryLabel(currency: CurrencyType) {
   return country;
 }
 
-export function getCurrecyUnitLabel(currency: CurrencyType) {
+export function getCurrencyUnit(currency: CurrencyType) {
   let unit = '';
   switch (currency) {
     case 'USD':
@@ -46,6 +46,23 @@ export function getCurrecyUnitLabel(currency: CurrencyType) {
       break;
     case 'KRW':
       unit = '₩';
+      break;
+  }
+
+  return unit;
+}
+
+export function getCurrencyUnitLabel(currency: CurrencyType) {
+  let unit = '';
+  switch (currency) {
+    case 'USD':
+      unit = '달러';
+      break;
+    case 'JPY':
+      unit = '엔화';
+      break;
+    case 'KRW':
+      unit = '원';
       break;
   }
 
