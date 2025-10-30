@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { ReactQueryProvider } from '@/components/ReactQueryProvider';
+import { Portal } from '@/components/common/Portal';
 
 import '@/styles/globals.css';
 
@@ -12,7 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <Portal.Provider>{children}</Portal.Provider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
