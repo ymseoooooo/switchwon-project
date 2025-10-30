@@ -4,4 +4,10 @@ export const QueryKey = {
 
     findLatestExchangeRate: () => [...QueryKey.exchangeRate.base, 'findLatestExchangeRate'],
   },
+
+  wallet: {
+    base: ['wallet'] as const,
+
+    findWallets: () => [...QueryKey.wallet.base, 'findWallets'],
+  },
 };
