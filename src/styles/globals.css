@@ -17,7 +17,9 @@
   --color-gray-800: #28323c;
 
   --color-red-500: #fe5050;
+  --color-buy-red-disabled: #ffa7a7;
   --color-sell-blue: #3b6eff;
+  --color-sell-blue-disabled: #9db6ff;
 
   --color-menu-disabled: #8899aa;
 
@@ -35,6 +37,10 @@
 }
 
 @layer utilities {
+  .z-overlay {
+    z-index: 50;
+  }
+
   /* Font */
   /* regular */
   .font-regular-14 {

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
 
 import { buttonSizeMap, buttonVariantMap, Color, Size, Variant } from './button.define';
 import { cn } from '@/utils/tailwind';
@@ -10,17 +10,12 @@ interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'siz
   color?: Color;
 }
 
-export function Button({
-  className,
-  disabled,
-  children,
-  size = 'md',
-  variant = 'contained',
-  color = 'darkNavy',
-  ...restProps
-}: ButtonProps) {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  const { className, disabled, children, size = 'md', variant = 'contained', color = 'darkNavy', ...restProps } = props;
+
   return (
     <button
+      ref={ref}
       {...restProps}
       className={cn(
         buttonVariantMap[variant][color],
@@ -36,4 +31,4 @@ export function Button({
       {children}
     </button>
   );
-}
+});
