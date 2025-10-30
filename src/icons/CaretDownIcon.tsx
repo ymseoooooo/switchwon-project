@@ -9,7 +9,7 @@ export function CaretDownIcon(props: CaretDownIconProps) {
   return (
     <Icon {...props}>
       <svg
-        className={cn('fill-sell-blue h-6 w-6', className)}
+        className={cn('fill-sell-blue size-6', className)}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

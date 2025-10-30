@@ -14,7 +14,7 @@ export function Navigationbar() {
       <nav className="h-[75px] w-full border-b border-gray-300 px-10 py-4">
         <div className="flex justify-between">
           <div className="flex items-center gap-2">
-            <LogoIcon className="h-6 w-6" />
+            <LogoIcon className="size-6" />
             <div className="font-bold-24">Exchange app</div>
           </div>
 

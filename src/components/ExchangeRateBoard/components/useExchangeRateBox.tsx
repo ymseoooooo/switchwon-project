@@ -11,14 +11,14 @@ export function useExchangeRateBox(): UseExchangeRateBoxReturn {
     if (changePercentage > 0) {
       return (
         <div className="text-buy-red font-regualar-16 flex">
-          <CaretUpIcon className="h-6 w-6" />
+          <CaretUpIcon className="size-6" />
           <div>+{changePercentage}%</div>
         </div>
       );
     } else {
       return (
         <div className="text-sell-blue font-regualar-16 flex">
-          <CaretDownIcon className="h-6 w-6" />
+          <CaretDownIcon className="size-6" />
           <div>{changePercentage}%</div>
         </div>
       );

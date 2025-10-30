@@ -9,7 +9,7 @@ export function LogoIcon(props: LogoIconProps) {
   return (
     <Icon {...props}>
       <svg
-        className={cn('h-20 w-20', className)}
+        className={cn('size-20', className)}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 841.89 841.89"
