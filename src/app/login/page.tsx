@@ -1,7 +1,5 @@
 import { LogoIcon } from '@/icons/LogoIcon';
-import { Input } from '@/components/common/Input';
-import { Button } from '@/components/common/Button';
-import { Box } from '@/components/Box/Box';
+import { LoginForm } from '@/components/LoginForm';
 
 export default function LoginPage() {
   return (
@@ -15,13 +13,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-      <Box className="flex w-[560px] flex-col gap-8">
-        <Input inputContainerClassName="w-full" label="이메일 주소를 입력해 주세요." />
-
-        <Button className="w-full" size="lg">
-          로그인하기
-        </Button>
-      </Box>
+      <LoginForm />
     </div>
   );
 }
