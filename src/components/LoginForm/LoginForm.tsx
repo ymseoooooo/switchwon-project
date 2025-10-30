@@ -1,5 +1,5 @@
 'use client';
-import { Box } from '@/components/Box';
+import { Box } from '@/components/common/Box';
 import { Button } from '@/components/common/Button';
 import { Input } from '@/components/common/Input';
 

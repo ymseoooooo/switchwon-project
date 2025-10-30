@@ -1,5 +1,5 @@
 import { ExchangeRate } from '@/apis/interfaces/exchangeRate';
-import { Box } from '@/components/Box';
+import { Box } from '@/components/common/Box';
 import { useExchangeRateBox } from './useExchangeRateBox';
 import { getCurrencyTransrateLabel } from '@/utils/currency';
 

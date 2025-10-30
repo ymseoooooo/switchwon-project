@@ -1,5 +1,5 @@
 'use client';
-import { Box } from '@/components/Box';
+import { Box } from '@/components/common/Box';
 import { CurrencyLabel } from '@/components/CurrencyLabel';
 import { Divide } from '@/components/common/Divide';
 

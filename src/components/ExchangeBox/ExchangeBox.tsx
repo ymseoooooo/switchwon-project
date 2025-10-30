@@ -1,6 +1,6 @@
 'use client';
 import { cn } from '@/utils/tailwind';
-import { Box } from '@/components/Box';
+import { Box } from '@/components/common/Box';
 import { Button } from '@/components/common/Button';
 import { Divide } from '@/components/common/Divide';
 import { Input } from '@/components/common/Input';
