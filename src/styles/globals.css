@@ -17,6 +17,7 @@
   --color-gray-800: #28323c;
 
   --color-red-500: #fe5050;
+  --color-sell-blue: #3b6eff;
 
   --color-menu-disabled: #8899aa;
 
@@ -26,6 +27,9 @@
 }
 
 @theme inline {
+  --color-divide: var(--color-gray-400);
+  --color-buy-red: var(--color-red-500);
+
   /* Button */
   --color-button-blue: var(--color-blue-500);
 }

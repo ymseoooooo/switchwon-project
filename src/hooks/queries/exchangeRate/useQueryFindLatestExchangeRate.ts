@@ -6,6 +6,8 @@ import { ErrorResponse } from '@/defines/api/errorCode';
 import { QueryKey } from '@/constants/query/key';
 import { exchangeRate } from '@/apis/factories/exchangeRate';
 
+export const QUERY_FIND_LATEST_EXCHANGE_RATE_INTERVAL = 60000;
+
 type Request = undefined;
 type Response = FindExchangeRateLatestRateResponse;
 
