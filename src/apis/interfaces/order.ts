@@ -10,3 +10,10 @@ export interface FindOrderQuoteResponse {
   krwAmount: number;
   appliedRate: number;
 }
+
+export interface PostOrderRequest {
+  exchangeRateId: number;
+  fromCurrency: CurrencyType;
+  toCurrency: CurrencyType;
+  forexAmount: number;
+}
