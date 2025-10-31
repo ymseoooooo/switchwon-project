@@ -1,5 +1,6 @@
 'use client';
-import { ChangeEventHandler, MouseEventHandler, useCallback, useEffect, useState } from 'react';
+import { ChangeEventHandler, MouseEventHandler, useEffect, useMemo, useState } from 'react';
+import { debounce } from 'lodash-es';
 
 import { useQueryFindLatestExchangeRate } from '@/hooks/queries/exchangeRate/useQueryFindLatestExchangeRate';
 import { CurrencyType } from '@/apis/interfaces/currency';
@@ -10,6 +11,7 @@ import { keepPreviousData, useQueryClient } from '@tanstack/react-query';
 import { useDebounce } from '@uidotdev/usehooks';
 import { useMutationPostOrder } from '@/hooks/queries/order/useMutationPostOrder';
 import { QueryKey } from '@/constants/query/key';
+import { DomainErrorCode } from '@/defines/api/errorCode';
 
 interface UseExchangeBoxReturn {
   exchangeType: ExchangeType;
@@ -26,7 +28,7 @@ interface UseExchangeBoxReturn {
 export function useExchangeBox(): UseExchangeBoxReturn {
   const queryClient = useQueryClient();
   const [exchangeType, setExchangeType] = useState<ExchangeType>('buy');
-  const [currency, setCurrency] = useState<CurrencyType>();
+  const [currency, setCurrency] = useState<CurrencyType>('JPY');
   const [forexAmount, setForexAmount] = useState<string>('1');
 
   const deBouncedForexAmount = useDebounce<string>(forexAmount, 500);
@@ -36,7 +38,7 @@ export function useExchangeBox(): UseExchangeBoxReturn {
     req: undefined,
   });
 
-  const currencies = exchangeRates?.flatMap(item => item.currency);
+  const currencies = useMemo(() => exchangeRates?.flatMap(item => item.currency), [exchangeRates]);
   const fromCurrency = exchangeType === 'buy' ? 'KRW' : currency!;
   const toCurrency = exchangeType === 'buy' ? currency! : 'KRW';
 
@@ -70,7 +72,7 @@ export function useExchangeBox(): UseExchangeBoxReturn {
     setForexAmount(e.target.value);
   };
 
-  const handleClickOrder: MouseEventHandler<HTMLButtonElement> = () => {
+  const handleClickOrder: MouseEventHandler<HTMLButtonElement> = debounce(() => {
     const exchangeRateId = exchangeRates?.find(item => item.currency === currency)?.exchangeRateId;
 
     if (!exchangeRateId) {
@@ -86,19 +88,17 @@ export function useExchangeBox(): UseExchangeBoxReturn {
 
     mutateOrder(orderRequest, {
       onSuccess: () => {
-        console.log('success');
         queryClient.invalidateQueries({ queryKey: QueryKey.wallet.findWallets() });
       },
-      onError: err => console.error(err.response?.data),
-      // TODO: EXCHANGE_RATE_MISMATCH error code 추가후 queryClient.invalidateQueries({ queryKey: QueryKey.exchangeRate.findLatestExchangeRate() });
-    });
-  };
+      onError: err => {
+        console.error(err.response?.data);
 
-  useEffect(() => {
-    if (currencies) {
-      setCurrency(currencies[0]);
-    }
-  }, [currencies]);
+        if (err.response?.data.code === DomainErrorCode.EXCHANGE_RATE_MISMATCH) {
+          queryClient.invalidateQueries({ queryKey: QueryKey.exchangeRate.findLatestExchangeRate() });
+        }
+      },
+    });
+  }, 500);
 
   return {
     exchangeType,
