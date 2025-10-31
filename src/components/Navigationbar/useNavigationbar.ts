@@ -1,4 +1,5 @@
 'use client';
+import { EToken } from '@/constants/cookie';
 import { removeCookie } from '@/utils/cookie';
 import { useRouter } from 'next/navigation';
 import { MouseEventHandler } from 'react';
@@ -14,7 +15,7 @@ export function useNavigationbar(): UseNavigationbarReturn {
 
   const handleClickLogout = async () => {
     try {
-      await removeCookie('token');
+      await removeCookie(EToken.ACCESS);
       router.push('/login');
     } catch (error) {
       console.error(error);

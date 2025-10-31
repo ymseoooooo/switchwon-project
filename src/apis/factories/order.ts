@@ -1,25 +1,24 @@
-import { axiosInstance, serverUrl } from '../config';
+import { axiosInstance, serverDomainPath } from '../config';
 import { ApiResponse } from '@/defines/api/response';
 import { getAuthorizationConfig } from '../common';
 import { Request2QueryParam } from '@/utils/query';
 import { FindOrderQuoteRequest, FindOrderQuoteResponse, PostOrderRequest } from '../interfaces/order';
 
-const axiosOrderInstance = axiosInstance.create({
-  baseURL: `${serverUrl}/orders`,
-});
-
 export const order = {
   findOrderQuote: async (request: FindOrderQuoteRequest) => {
     return (
-      await axiosOrderInstance.get<ApiResponse<FindOrderQuoteResponse>>(`/quote?${Request2QueryParam(request)}`, {
-        ...(await getAuthorizationConfig()),
-      })
+      await axiosInstance.get<ApiResponse<FindOrderQuoteResponse>>(
+        `${serverDomainPath.order}/quote?${Request2QueryParam(request)}`,
+        {
+          ...(await getAuthorizationConfig()),
+        }
+      )
     ).data.data;
   },
 
   postOrder: async (request: PostOrderRequest) => {
     return (
-      await axiosOrderInstance.post<ApiResponse<string>>(``, request, {
+      await axiosInstance.post<ApiResponse<string>>(`${serverDomainPath.order}`, request, {
         ...(await getAuthorizationConfig()),
       })
     ).data.data;

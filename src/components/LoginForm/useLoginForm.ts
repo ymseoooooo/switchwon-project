@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import useMutationLogin from '@/hooks/queries/auth/useMutationLogin';
 import { setCookie } from '@/utils/cookie';
 import { getJwtMaxAge } from '@/utils/jwt';
+import { EToken } from '@/constants/cookie';
 
 interface UseLoginFormReturn {
   email: string;
@@ -35,7 +36,7 @@ export function useLoginForm(): UseLoginFormReturn {
           try {
             const maxAge = getJwtMaxAge(res.token);
 
-            await setCookie('token', res.token, { maxAge });
+            await setCookie(EToken.ACCESS, res.token, { maxAge });
             router.push('/');
           } catch (error) {
             console.error(error);
