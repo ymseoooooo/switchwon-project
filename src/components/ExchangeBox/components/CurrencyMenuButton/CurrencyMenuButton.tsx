@@ -3,16 +3,11 @@ import { CurrencyType } from '@/apis/interfaces/currency';
 import { useCurrencyMenuButton } from './useCurrencyMenuButton';
 import { Button } from '@/components/common/Button';
 import { OverlayPanel } from '@/components/common/OverlayPanel';
-import { useRef, useState } from 'react';
-import { OverlayPanelHandler } from '@/components/common/OverlayPanel/overlayPanel.define';
-import { USAIcon } from '@/icons/USAIcon';
-import { JapanIcon } from '@/icons/JapanIcon';
 import { getCurrencyCountryLabel } from '@/utils/currency';
-import { Divide } from '@/components/common/Divide';
 
 interface CurrencyMenuProps {
   currency?: CurrencyType;
-  onChangeCurrency: (currency?: CurrencyType) => void;
+  onChangeCurrency: (currency: CurrencyType) => void;
 }
 
 export function CurrencyMenuButton({ currency, onChangeCurrency }: CurrencyMenuProps) {

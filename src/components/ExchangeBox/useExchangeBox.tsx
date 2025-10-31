@@ -15,11 +15,11 @@ import { DomainErrorCode } from '@/defines/api/errorCode';
 
 interface UseExchangeBoxReturn {
   exchangeType: ExchangeType;
-  currency?: CurrencyType;
+  currency: CurrencyType;
   forexAmount: string;
   orderQuote?: FindOrderQuoteResponse;
   handler: {
-    handleChangeCurrency: (currency?: CurrencyType) => void;
+    handleChangeCurrency: (currency: CurrencyType) => void;
     handleClickTab: (type: ExchangeType) => void;
     handleChangeForexAmount: ChangeEventHandler<HTMLInputElement>;
     handleClickOrder: MouseEventHandler<HTMLButtonElement>;
@@ -39,8 +39,8 @@ export function useExchangeBox(): UseExchangeBoxReturn {
   });
 
   const currencies = useMemo(() => exchangeRates?.flatMap(item => item.currency), [exchangeRates]);
-  const fromCurrency = exchangeType === 'buy' ? 'KRW' : currency!;
-  const toCurrency = exchangeType === 'buy' ? currency! : 'KRW';
+  const fromCurrency = exchangeType === 'buy' ? 'KRW' : currency;
+  const toCurrency = exchangeType === 'buy' ? currency : 'KRW';
 
   const { data: orderQuote } = useQueryFindOrderQuote({
     req: {
@@ -60,7 +60,7 @@ export function useExchangeBox(): UseExchangeBoxReturn {
     },
   });
 
-  const handleChangeCurrency = (currency?: CurrencyType) => {
+  const handleChangeCurrency = (currency: CurrencyType) => {
     setCurrency(currency);
   };
 
